@@ -1,41 +1,54 @@
-
+$turquoise:#4ECDC4;
+$light-turquoise:#d9f4f2;
+$just-white:white;
+$dark-turquoise:#39A8A0;
+.container{
+    display:block;
+    max-width:900px;
+    width:100%;
+    margin: 0 auto;
+    position:relative;
+    padding-left:15px;
+    text-transform:capitalize;
+}
 tr:nth-child(even)
 {
-  background-color: white;
+  background-color:$just-white;
 }
 
 tr:nth-child(odd)
 {
-  background-color: #d9f4f2;
+  background-color: $light-turquoise;
 }
 
 tr:first-child{
-    background-color: #4ECDC4;
+    background-color: $turquoise;
 }
 .customersTable
 {
-    margin-left: 350px;
     border: 1px solid;
     border-color: black;
-    width: 50%;  
-    background-color: #d9f4f2;
+    width: 100%;  
+    background-color: $light-turquoise;
     border-radius: 5px;
+    font-size:17px;
 }
 .invoicetable
 {
-    margin-left: 350px;
     border: 1px solid;
     border-color: black;
-    width: 50%;  
+    width: 100%;  
+    border-radius: 5px;
+    font-size:24px;
 }
 
 .userForm
 {
-    
     border:  1px solid #30928c;
     width: 100%;
     display: block;
-  
+    background-image: linear-gradient(to right, rgba(204, 255, 255), rgba(255,0,0,0));
+    box-sizing:border-box;
 }
 .formField
 {
@@ -46,6 +59,7 @@ tr:first-child{
     padding-right: 10px;
     margin-bottom: 10px;
     padding-right: 30px;
+    font-weight:bold;
 }
 .formName
 {
@@ -67,6 +81,7 @@ tr:first-child{
     padding-left: 10px;
     border:1px solid #4ECDC4;
     border-radius: 15px;
+    margin-left:10px;
 }
 
 

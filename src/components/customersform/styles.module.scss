@@ -1,0 +1,173 @@
+$turquoise:#4ECDC4;
+$light-turquoise:#d9f4f2;
+$just-white:white;
+$dark-turquoise:#00CED1;
+.container{
+    display:block;
+    max-width:900px;
+    width:100%;
+    margin: 0 auto;
+    position:relative;
+    padding-left:15px;
+    text-transform:capitalize;
+}
+tr:nth-child(even)
+{
+  background-color:$just-white;
+}
+
+tr:nth-child(odd)
+{
+  background-color: $light-turquoise;
+}
+
+tr:first-child{
+    background-color: $turquoise;
+}
+.customersTable
+{
+    border: 1px solid;
+    border-color: black;
+    width: 100%;  
+    background-color: $light-turquoise;
+    border-radius: 5px;
+    font-size:25px;
+}
+.invoicetable
+{
+    border: 1px solid;
+    border-color: black;
+    width: 100%;  
+    font-size: 23p;
+}
+
+.userForm
+{
+    border:  1px solid #30928c;
+    width: 100%;
+    display: block;
+    background-image: linear-gradient(to right, rgba(204, 255, 255), rgba(255,0,0,0));
+    box-sizing:border-box;
+}
+.formField
+{
+    display: block;
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    padding-right: 30px;
+    font-weight:bold;
+}
+.formName
+{
+    display: block;
+    font-size: 23px;
+    float: left;
+    width: 100%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    padding-left: 10px;
+}
+.formInput
+{
+    display: block;
+    width: 90%;
+    height: 20px;
+    font-size: 17px;
+    padding-left: 20px;
+    border:1px solid $turquoise;
+    border-radius: 15px;
+    margin-left:25px;
+    transition: 0.3s;
+}
+.formInput[type="text"]:focus {
+    border-color: #156760;
+    box-shadow: 0 0 8px 0 #156760;
+    
+  }
+
+.formButton
+{
+    display: block;
+    width: 100%;
+}
+.formSubmit
+{
+    display:block;
+    width:10%;
+    text-align: center;
+    font-size:17px;
+    margin: 0 auto;
+    background-color: turquoise;
+    border-color: turquoise;
+    color:black;
+    transition-duration: 0.4s;
+    font-weight: bold;
+    text-transform: uppercase;
+    opacity: 0.6;
+
+}
+.formSubmit:hover
+{
+    
+    color:black;
+    cursor: pointer;
+    opacity: 1;
+    transform: translateY(-5px);
+}
+
+.iconForm
+{
+        width: 100%;
+        height: 100%;
+}
+.messageField
+{
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    left: 27%;
+    display: flex;   
+}
+.messageFieldRight
+{
+    position: absolute;
+    right: 6%;
+    color:red;
+    font-size:12px;
+}
+.icons
+{
+        border: 2px solid  cornflowerblue;
+        color:cornflowerblue;
+        border-radius: 9px;
+        float:left;
+        margin: 0 auto;
+        height: 5%;
+        width: 6%;
+        margin-right: 5px;
+}
+  @media only screen and (min-width: 400px)
+  {
+      .formField
+      {
+          float: none;
+      }
+  }
+
+  @media only screen and (min-width: 768px)
+     {
+         
+     }
+
+  @media only screen and (min-width: 992px) 
+  {
+      .formField
+      {
+          float: left;
+         
+      }
+  }

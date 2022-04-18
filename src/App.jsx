@@ -1,15 +1,15 @@
-import React from 'react';
-import HelloWorld from './components/HelloWorld';
-import Table from './components/Table/Table.jsx'
-import MerhabaDunya from './components/MerhabaDunya';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import Invoice from './components/invoice/index.jsx';
+import Customers from './components/customers/index.jsx';
 import './App.css';
+import Formvalidate from './components/customersform/index.jsx';
 
 function App() {
   return (
     <div className="App">
-      <Table/>
-
+      <Invoice />
+      <Customers />
+      <Formvalidate/>
     </div>
   );
 }
