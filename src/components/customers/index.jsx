@@ -1,6 +1,12 @@
 import  styles  from "./styles.module.scss";
 import React, { Component } from 'react';
+import {userInfos, headNames} from '../../mock/listingData';
+
 class Customers extends Component {
+    constructor() {
+        super();
+        this.state={}
+    }
 
     render() {
         return (
@@ -8,36 +14,30 @@ class Customers extends Component {
             <div className={styles.container}>
                 <h3>customers table</h3>
                         <table  className={styles.customersTable}>
-                            <tr>
-                                <th>first name</th>
-                                <th>last name</th>
-                                <th>E-mail</th>
-                            </tr>
-                            <tr>
-                                <td>bahar</td>
-                                <td>daniş</td>
-                                <td>22</td>
-                                </tr>
-                            <tr>
-                                <td>buse</td>
-                                <td>karakaş</td>
-                                <td>23</td> 
-                            </tr>
-                            <tr>
-                                <td>Ceren</td>
-                                <td>daniş</td>
-                                <td>20</td></tr>
+                        {
+                            headNames.map((item)=>(
                                 <tr>
-                                <td>john</td>
-                                <td>doe</td>
-                                <td>25</td>
+                                    {item.userHead.map((elem)=>(
+                                        <th>{elem}</th>
+                                    ))}
                                 </tr>
-                            </table> 
+                            
+                            ) )}
+                                {userInfos.map((item)=>
+                                (
+                                <tr>
+                                    {Object.keys(item).map((key)=>(
+                                        <td>{item[key]}</td>
+                                ) )} 
+                                </tr>  
+                                ))}
+                        </table> 
                     </div>    
                  </> 
             
         );
     }
-}
+ }
+
 
 export default Customers;

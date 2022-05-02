@@ -9,6 +9,7 @@ $dark-turquoise:#00CED1;
     margin: 0 auto;
     position:relative;
     padding-left:15px;
+    padding-right: 15px;
     text-transform:capitalize;
 }
 tr:nth-child(even)
@@ -150,24 +151,26 @@ tr:first-child{
         width: 6%;
         margin-right: 5px;
 }
-  @media only screen and (min-width: 400px)
+//   @media only screen and (min-width: 400px)
+//   {
+//       .formField
+//       {
+//           float: none;
+//       }
+//   }
+
+//   @media only screen and (min-width: 768px)
+//      {
+         
+//      }
+
+  @media only screen and (max-width: 992px) 
   {
       .formField
       {
-          float: none;
-      }
-  }
+         float: none;
+        padding-right: 50px;
+        width: 100%;
 
-  @media only screen and (min-width: 768px)
-     {
-         
-     }
-
-  @media only screen and (min-width: 992px) 
-  {
-      .formField
-      {
-          float: left;
-         
       }
   }

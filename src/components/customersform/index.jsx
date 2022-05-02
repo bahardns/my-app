@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import styles from "./styles.module.scss";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
@@ -14,7 +14,6 @@ function Formvalidate() {
 
     const validateEmail = (event) => {
         const email = event.target.value; 
-        console.log(email)
         if (emailRegex.test(email) || email==='')  {
             setIsValid(true);
             setErrorMessage('');
@@ -30,7 +29,6 @@ function Formvalidate() {
     const letterRegex = /^[a-zA-Z ğüşöçıİĞÜŞÖÇ]*$/;
     const validateWord = (event) => {
         const word = event.target.value;
-        console.log(' word', word);
         if (letterRegex.test(word) || word==='') {
             setIsName(true);
             setMessages('');
@@ -48,7 +46,6 @@ function Formvalidate() {
 
     const SnameError = (event) => {
         const word = event.target.value;
-        console.log(' word', word);
         if (WordRegex.test(word)) {
             setIsSurname(true);
             setSurnameError('');
@@ -66,7 +63,6 @@ function Formvalidate() {
 
     const valideteNumber = (event) => {
         const number = event.target.value;
-        console.log(number)
         if (NumberRegex.test(number)) {
             setIsNumber(true);
             setNumberError('');
@@ -94,59 +90,6 @@ function Formvalidate() {
         }
     }
 
-
-
-    const emailIcon =
-    {
-        color: 'black',
-        float: 'left',
-        border: '1px solid',
-        height:'5%' ,
-        width:'6%',
-        
-    };
-    const nameIcon =
-    {
-        float: 'left',
-        border: '1px solid',
-        margin: '0 auto',
-        height:'5%' ,
-        width:'6%'
-
-    };
-    const billIcon =
-    {
-        float: 'left',
-        border: '1px solid',
-        margin: '0 auto',
-        height:'5%' ,
-        width:'6%'
-    }
-    const amountIcon=
-    {
-        float:'left',
-        margin: '0 auto',
-        border: '1px solid',
-        height:'5%' ,
-        width:'6%'
-    };
-    const lastName=
-    {
-        float:'left',
-        margin: '0 auto',
-        border: '1px solid',
-        height:'5%' ,
-        width:'6%'
-    }
-    const ProductIcon=
-    {
-        float:'left',
-        border: '1px solid',
-        height:'5%' ,
-        width:'6%' 
-
-    }
-
     return (
         <div className={styles.container}>
             <h3>customers login</h3>
@@ -155,9 +98,10 @@ function Formvalidate() {
                     <label className={styles.formName}>First name:</label>
                     <div className={styles.iconForm}>
                         <BsFillPeopleFill  class={styles.icons}/>
-                    </div>
-                    <input className={styles.formInput} type="text" id="fname" name="fname" placeholder="First Name" onChange={validateWord} ></input>
+                        <input className={styles.formInput} type="text" id="fname" name="fname" placeholder="First Name" onChange={validateWord} ></input>
                     <div className={styles.messageField}>{messages}</div>
+                    </div>
+                   
                 </div>
 
                 <div className={styles.formField}>
