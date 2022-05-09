@@ -12,6 +12,9 @@ class Invoice extends Component {
     //         ]
     //         }
     // }
+    // if (a<b && c>b)
+    // if(a !== null)       a!==null && a<5 && console.log(a)
+    // if(a === null)
     render() {
         return (
 
@@ -20,7 +23,7 @@ class Invoice extends Component {
                             <table className={styles.invoicetable}>
                             <thead className={styles.thead}>
                             {
-                                headNames.map((item)=>(
+                                headNames !== null && headNames.map((item)=>(
                                     <tr className={styles.customer}>
                                         {item.invoiceHead.map((elem) => (
                                             <th>{elem}</th>
@@ -32,11 +35,11 @@ class Invoice extends Component {
                             <tbody>
                                 {invoiceInfos.map((item)=>(
                                     <tr>
-                                    {Object.keys(item).map((key)=>(
+                                    { Object !==null && Object.keys(item).map((key)=>(
                                            <td>{item[key]}</td>
+                                        
                                         ))}
                                     </tr>
-                                        
                                 ))}           
                             </tbody>
                         </table>

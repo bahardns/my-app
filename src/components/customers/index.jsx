@@ -14,6 +14,7 @@ class Customers extends Component {
             <div className={styles.container}>
                 <h3>customers table</h3>
                         <table  className={styles.customersTable}>
+                        <thead className={styles.thead}>
                         {
                             headNames.map((item)=>(
                                 <tr>
@@ -21,16 +22,18 @@ class Customers extends Component {
                                         <th>{elem}</th>
                                     ))}
                                 </tr>
-                            
                             ) )}
+                            </thead>
+                            <tbody>
                                 {userInfos.map((item)=>
                                 (
                                 <tr>
-                                    {Object.keys(item).map((key)=>(
+                                    {Object !==null && Object.keys(item).map((key)=>(
                                         <td>{item[key]}</td>
                                 ) )} 
                                 </tr>  
                                 ))}
+                                </tbody>
                         </table> 
                     </div>    
                  </> 

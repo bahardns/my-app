@@ -3,25 +3,32 @@ $light-turquoise:#d9f4f2;
 $just-white:white;
 .container{
     display:block;
-    max-width:900px;
     width:100%;
     margin: 0 auto;
     position:relative;
     padding-left:15px;
+    padding-right: 15px;
     text-transform:capitalize;
 }
-tr:nth-child(even)
+tbody tr
 {
-  background-color:$just-white;
+    border-bottom: black 1px solid ;
+}
+tbody tr:nth-child(even)
+{
+    background-color: $light-turquoise;
+}
+tbody tr:nth-child(odd)
+{
+    
+    background-color: $just-white;
 }
 
-tr:nth-child(odd)
+.thead > tr > th 
 {
-  background-color: $light-turquoise;
-}
-
-tr:first-child{
     background-color: $turquoise;
+    border-bottom: black 1px solid;
+
 }
 .customersTable
 {
@@ -31,6 +38,7 @@ tr:first-child{
     background-color: $light-turquoise;
     border-radius: 5px;
     font-size:25px;
+    background-attachment: fixed;
 }
 .invoicetable
 {

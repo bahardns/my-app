@@ -11,6 +11,9 @@ function App() {
       <Invoice />
       <Customers />
       <Formvalidate/>
+      {/* <Tables type='customers'/>
+      <Tables type='invoice'/>  */}
+ 
     </div>
   );
 }

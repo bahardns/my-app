@@ -4,7 +4,6 @@ $just-white:white;
 $dark-turquoise:#00CED1;
 .container{
     display:block;
-    max-width:900px;
     width:100%;
     margin: 0 auto;
     position:relative;
@@ -49,6 +48,8 @@ tr:first-child{
     display: block;
     background-image: linear-gradient(to right, rgba(204, 255, 255), rgba(255,0,0,0));
     box-sizing:border-box;
+    background-attachment: fixed;
+
 }
 .formField
 {

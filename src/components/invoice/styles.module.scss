@@ -4,21 +4,23 @@ $just-white:white;
 $dark-turquoise:#39A8A0;
 .container{
     display:block;
-    max-width:900px;
     width:100%;
     margin: 0 auto;
     position:relative;
     padding-left:15px;
+    padding-right: 15px;
     text-transform:capitalize;
-}
-tbody tr:nth-child(odd)
-{
-    background-color: $light-turquoise;
+    
 }
 tbody tr:nth-child(even)
 {
     background-color: $just-white;
 }
+tbody tr:nth-child(odd)
+{
+    background-color: $light-turquoise;
+}
+
 .thead > tr > th 
 {
     background-color: $turquoise;
@@ -37,6 +39,8 @@ tbody tr:nth-child(even)
     background-color: $light-turquoise;
     border-radius: 5px;
     font-size:17px;
+    background-attachment: fixed;
+
 }
 .container.tbody
 {
