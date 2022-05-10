@@ -1,18 +1,15 @@
-// import React, { useEffect, useState } from 'react';
-import Invoice from './components/invoice/index.jsx';
-import Customers from './components/customers/index.jsx';
+ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Formvalidate from './components/customersform/index.jsx';
+import Tables from './components/tables/index.jsx';
 
 
 function App() {
   return (
     <div className="App">
-      <Invoice />
-      <Customers />
       <Formvalidate/>
-      {/* <Tables type='customers'/>
-      <Tables type='invoice'/>  */}
+      <Tables type='customers'/>
+      <Tables type='invoice'/> 
  
     </div>
   );

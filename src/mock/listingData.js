@@ -1,7 +1,7 @@
 export const headNames = [
     {
     userHead:['First Name',	'Last Name','E-Mail'],
-    invoiceHead:['billNo','amount','productName','status']
+    invoiceHead:['Bill No','Amount','Product Name','Status']
     }
 ]
 
