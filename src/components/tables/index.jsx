@@ -1,6 +1,7 @@
-import  styles  from "./styles.module.scss";
 import React, { Component } from 'react';
+import axios from 'axios';
 import {userInfos, invoiceInfos, headNames} from '../../mock/listingData';
+import  styles  from "./styles.module.scss";
 
 class Tables extends Component {
     constructor(props) {
@@ -12,6 +13,29 @@ class Tables extends Component {
         }
     }
 
+    // handleCustomersData = () => {
+    //     axios.get('http://localhost:3000/customers') 
+    //     .then(function (response) {
+    //     console.log ('response',response.data);
+    //     })
+    //     .catch(function (error) {
+    //     console.log(error);
+    //     })
+    //     .then(function () {
+    //     });
+    // }
+
+    // handleInvoiceData = () => {
+    //     axios.get('http://localhost:3000/invoice') 
+    //     .then(function (response) {
+    //     console.log ('response',response.data);
+    //     })
+    //     .catch(function (error) {
+    //     console.log(error);
+    //     })
+    //     .then(function () {
+    //     });
+    // }
 
     render() {
         const {type} = this.props;

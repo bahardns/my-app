@@ -4,6 +4,7 @@ $just-white:white;
 .container{
     display:block;
     width:100%;
+    max-width: 950px;
     margin: 0 auto;
     position:relative;
     padding-left:15px;
@@ -88,5 +89,9 @@ tbody tr:nth-child(odd)
     border-radius: 15px;
     margin-left:10px;
 }
-
-
+// @media only screen and (max-width: 500px){
+//     table, thead, tbody, th, td, tr {
+//         display: block; 
+//         float: none;
+//     }
+// }
