@@ -49,8 +49,6 @@ tr:first-child{
     display: block;
     background-image: linear-gradient(to right, rgba(204, 255, 255), rgba(255,0,0,0));
     box-sizing:border-box;
-    background-attachment: fixed;
-
 }
 .formField
 {
@@ -74,6 +72,10 @@ tr:first-child{
     text-align: left;
     padding-left: 10px;
 }
+.formName span{
+    color:red;
+    padding-right: 5px;
+}
 .formInput
 {
     display: block;
@@ -86,6 +88,7 @@ tr:first-child{
     margin-left:25px;
     transition: 0.3s;
 }
+
 .formInput[type="text"]:focus {
     border-color: #156760;
     box-shadow: 0 0 8px 0 #156760;
@@ -96,11 +99,13 @@ tr:first-child{
 {
     display: block;
     width: 100%;
+    position:relative;
+    margin: 0 auto;
 }
 .formSubmit
 {
     display:block;
-    width:10%;
+    // width:10%;
     text-align: center;
     font-size:17px;
     margin: 0 auto;
@@ -111,6 +116,7 @@ tr:first-child{
     font-weight: bold;
     text-transform: uppercase;
     opacity: 0.6;
+    margin-bottom: 5px;
 
 }
 .formSubmit:hover
@@ -167,8 +173,22 @@ tr:first-child{
 //      {
          
 //      }
-
-  @media only screen and (max-width: 992px) 
+@media  screen and (max-width: 600px) {
+    .container{
+      width: 600px;
+      margin: 0 auto;
+      display:block;
+      }  
+    .userform{
+        // width: 50%;
+        margin: 0 auto;
+        // display:block;
+        }  
+    .formField{
+        padding-right: 0px;
+    }
+}
+  @media  screen and (max-width: 992px) 
   {
       .formField
       {

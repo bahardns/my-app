@@ -2,12 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+// import Swiper from "./components/swiper/index.jsx";
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import SwiperC from "./components/swiper/index.jsx";
-// eslint-disable-next-line
-import "swiper/css/bundle";
-import "../src/components/swiper/styles.module.scss";
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

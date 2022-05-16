@@ -4,13 +4,29 @@ $just-white:white;
 .container
 {
     width: 100%;
+    // max-width: 950px;
+    display: block;
+    margin: 0 auto;
+    position:relative;
+    // position: fixed;
+    margin-bottom: 10px;
+    display:block;
+    max-width: 950px;
+}
+.icons
+{
+
+  background-image: url(ec1.png);
+  background-size: 100px 50px;
+  width: 150px;
+  height: 50px;
+  background-repeat: no-repeat;
 }
 ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
     overflow: hidden;
-    background-color:#13BAAE ;
+    background-color:#13BAAE ; 
   }
   
   li {
@@ -39,3 +55,75 @@ ul {
     background-color: #4ECDC4;
    
   }
+  .logincontainer
+  {
+    float: right;
+    padding-top: 0px;
+    margin:0 auto;
+
+  }
+ .logincontainer input[type=text] {
+    // padding: 6px;
+    margin-right: 5px;
+    margin-top: 10px;
+    font-size: 17px;
+    border: none;
+    background-color: #d9f4f2;
+    width:120px;
+    }
+    // .logincontainer input[type=placeholder]
+    // {
+    //   color:white;
+    // }
+  .logincontainer button {
+    float: right;
+    padding: 3px 3x;
+    margin-top: 10px;
+    margin-right: 16px;
+    background-color: #d9f4f2;
+    color: #4ECDC4;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 600px) {
+    .container{
+      width: 600px;
+      margin: 0 auto;      
+    }
+    .logincontainer
+    {
+      width: 600px;
+      margin: 0 auto;
+      // display:block;
+      // position: relative;
+      float: none;
+    
+    }
+    logincontainer input {
+      padding-right:10px;
+    }
+    .logincontainer button{
+      float: none;
+    }
+    .container ul {
+       padding-left: 0px; 
+      //  float: none;
+
+  }
+    ul li{
+      // float: none;
+      width: 100%;
+      padding-left: 0;
+    }
+    ul li:first-child{
+      margin: 0 auto;
+    }
+  }
+  
+  @media screen and (min-width: 992px) {
+    //For Large Laptops
+        .container {
+            width: 950px;
+        }
+      }

@@ -280,7 +280,7 @@ function Formvalidate() {
             <h3>customers login</h3>
             <form className={styles.userForm} onSubmit={(e)=> handleSubmit(e)}>
                 <div className={styles.formField}>
-                    <label className={styles.formName}>* First name:</label>
+                    <label className={styles.formName}><span>*</span> First name:</label>
                         <div className={styles.iconForm}>
                             <BsFillPeopleFill  class={styles.icons}/>
                             <input className={styles.formInput} type="text" id="fname" name="fname" placeholder="First Name" value={formValues.firstName} onChange={(e)=> handleValuesChange(e,'firstName')}></input>
@@ -288,7 +288,7 @@ function Formvalidate() {
                         </div>
                 </div>
                 <div className={styles.formField}>
-                    <label className={styles.formName}>* Last name: </label>
+                    <label className={styles.formName}><span>*</span> Last name: </label>
                     <div className={styles.iconForm}>
                         <BsFillPeopleFill  class={styles.icons}/>
                     </div>
@@ -296,7 +296,7 @@ function Formvalidate() {
                     <div className={styles.messageFieldRight}>{SurnameError}</div>
                 </div>
                 <div className={styles.formField}>
-                    <label className={styles.formName}>* E-Mail:</label>
+                    <label className={styles.formName}><span>*</span>E-Mail:</label>
                     <div className= {styles.iconForm}>
                         <AiOutlineMail  class={styles.icons} />
                     </div>
@@ -304,7 +304,7 @@ function Formvalidate() {
                     <div className={styles.messageField}>{errorMessage}</div>
                 </div>
                 <div className={styles.formField}>
-                    <label className={styles.formName}>* Bill no:</label>
+                    <label className={styles.formName}><span>*</span>Bill no:</label>
                     <div className={styles.iconForm}>
                         <RiBillFill  class={styles.icons} />
                     </div>
@@ -312,7 +312,7 @@ function Formvalidate() {
                     <div className={styles.messageFieldRight}>{NumberError}</div>
                 </div>
                 <div className={styles.formField}>
-                    <label className={styles.formName}>* Amount:</label>
+                    <label className={styles.formName}><span>*</span> Amount:</label>
                     <div className={styles.iconForm}>
                         <AiOutlineDollar class={styles.icons}/>
                     </div>
@@ -320,7 +320,7 @@ function Formvalidate() {
                     <div className={styles.messageField}>{AmountError}</div>
                 </div>
                 <div className={styles.formField}>
-                    <label className={styles.formName}>* Product Name:</label>
+                    <label className={styles.formName}><span>*</span> Product Name:</label>
                     <div className={styles.iconForm}>
                         <MdProductionQuantityLimits  class={styles.icons}/>
                     </div>
