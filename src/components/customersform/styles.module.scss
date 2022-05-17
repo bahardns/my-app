@@ -2,15 +2,24 @@ $turquoise:#4ECDC4;
 $light-turquoise:#d9f4f2;
 $just-white:white;
 $dark-turquoise:#00CED1;
+$dark-green:#30928c;
+
 .container{
     display:block;
     width:100%;
     max-width: 950px;
-    margin: 0 auto;
+    margin: 50px auto;
     position:relative;
     padding-left:15px;
     padding-right: 15px;
-    text-transform:capitalize;
+}
+.title
+{
+    color:$dark-green;
+    font-size: 20px;
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
 }
 tr:nth-child(even)
 {
@@ -54,12 +63,14 @@ tr:first-child{
 {
     display: block;
     float: left;
+    z-index: 99;
     width: 50%;
     box-sizing: border-box;
     padding-right: 10px;
     margin-bottom: 10px;
     padding-right: 30px;
     font-weight:bold;
+    position: relative;
 }
 .formName
 {
@@ -87,13 +98,14 @@ tr:first-child{
     border-radius: 15px;
     margin-left:25px;
     transition: 0.3s;
+    position: relative;
 }
 
-.formInput[type="text"]:focus {
-    border-color: #156760;
-    box-shadow: 0 0 8px 0 #156760;
+// .formInput[type="text"]:focus {
+//     border-color: #156760;
+//     box-shadow: 0 0 8px 0 #156760;
     
-  }
+//   }
 
 .formButton
 {
@@ -188,11 +200,10 @@ tr:first-child{
         padding-right: 0px;
     }
 }
-  @media  screen and (max-width: 992px) 
+  @media screen and (max-width: 992px) 
   {
       .formField
       {
-         float: none;
         padding-right: 50px;
         width: 100%;
 

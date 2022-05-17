@@ -200,6 +200,7 @@ function Formvalidate() {
             const axios = require('axios');
 
             await axios.post('http://localhost:3000/customers', { 
+                id:'',
                 firstName,
                 surName,
                 email
@@ -212,6 +213,7 @@ function Formvalidate() {
             });
     
             await axios.post('http://localhost:3000/invoice', {
+                id:'',
                 billNo, 
                 amount,
                 productName,
@@ -234,6 +236,24 @@ function Formvalidate() {
              .catch(function (error) {
               console.error(error);
             });  
+
+            // await axios.post('http://localhost:3000/records', {
+            //     id,
+            //     email,
+            //     invoiceId,
+            //     billNo,
+            //     amount,
+            //     status,
+            // })
+            // .then(function (response) {
+            //     console.log('invoice response', response.data);
+            //     if (!response.status===200){
+            //       console.log('hata')
+            //     }
+            //   })
+            //  .catch(function (error) {
+            //   console.error(error);
+            // }); 
         }
     }
           
@@ -277,10 +297,10 @@ function Formvalidate() {
 
     return (
         <div className={styles.container}>
-            <h3>customers login</h3>
+            <h3 className={styles.title}>Please fill the form below</h3>
             <form className={styles.userForm} onSubmit={(e)=> handleSubmit(e)}>
                 <div className={styles.formField}>
-                    <label className={styles.formName}><span>*</span> First name:</label>
+                     <label className={styles.formName}><span>*</span> First name:</label>
                         <div className={styles.iconForm}>
                             <BsFillPeopleFill  class={styles.icons}/>
                             <input className={styles.formInput} type="text" id="fname" name="fname" placeholder="First Name" value={formValues.firstName} onChange={(e)=> handleValuesChange(e,'firstName')}></input>

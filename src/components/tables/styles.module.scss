@@ -1,15 +1,21 @@
 $turquoise:#4ECDC4;
 $light-turquoise:#d9f4f2;
 $just-white:white;
+$dark-green:#30928c;
 .container{
     display:block;
     width:100%;
     max-width: 950px;
-    margin: 0 auto;
+    margin: 50px auto;
     position:relative;
     padding-left:15px;
     padding-right: 15px;
     text-transform:capitalize;
+}
+.title{
+    color:$dark-green;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
 }
 tbody tr
 {

@@ -13,38 +13,37 @@ class Tables extends Component {
         }
     }
 
-    // handleCustomersData = () => {
-    //     axios.get('http://localhost:3000/customers') 
-    //     .then(function (response) {
-    //     console.log ('response',response.data);
-    //     })
-    //     .catch(function (error) {
-    //     console.log(error);
-    //     })
-    //     .then(function () {
-    //     });
-    // }
+    handleCustomersData = () => {
+        axios.get('http://localhost:3000/customers') 
+        .then(function (response) {
+        console.log ('response',response.data);
+        })
+        .catch(function (error) {
+        console.log(error);
+        })
+        .then(function () {
+        });
+    }
 
-    // handleInvoiceData = () => {
-    //     axios.get('http://localhost:3000/invoice') 
-    //     .then(function (response) {
-    //     console.log ('response',response.data);
-    //     })
-    //     .catch(function (error) {
-    //     console.log(error);
-    //     })
-    //     .then(function () {
-    //     });
-    // }
+    handleInvoiceData = () => {
+        axios.get('http://localhost:3000/invoice') 
+        .then(function (response) {
+        console.log ('response',response.data);
+        })
+        .catch(function (error) {
+        console.log(error);
+        })
+        .then(function () {
+        });
+    }
 
     render() {
-        const {type} = this.props;
-        console.log(' headNames[0].userHead', headNames[0].invoiceHead) 
+        const {type, data} = this.props;
 
         return (
             <>
             <div className={styles.container}>
-                <h3> { type ==='customers' ?  'Customers Table' : 'Invoice Table'} </h3>
+                <h3 className={styles.title}> { type ==='customers' ?  'Customers Table' : 'Invoice Table'} </h3>
                         <table  className={styles.tableStyle}>
                         <thead className={styles.thead}>
                         {
@@ -60,14 +59,14 @@ class Tables extends Component {
                             ) )}
                             </thead>
                             <tbody>
-                                { type ==='customers' ?  userInfos.map((item)=>
+                                { type ==='customers' ?  data.map((item)=>
                                 (
                                 <tr>
                                     {Object !==null && Object.keys(item).map((key)=>(
                                         <td>{item[key]}</td>
                                 ) )} 
                                 </tr>  
-                                )): invoiceInfos.map((item)=>
+                                )): data.map((item)=>
                                 (
                                 <tr>
                                     {Object !==null && Object.keys(item).map((key)=>(
