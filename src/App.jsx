@@ -1,7 +1,7 @@
  import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
-import Formvalidate from './components/customersform/index.jsx';
+import FormValidate from './components/customersform/index.jsx';
 import Tables from './components/tables/index.jsx';
 import Header from './components/header/index.jsx'
 import Footer from "./components/Footer/index.jsx"
@@ -19,7 +19,6 @@ function App  () {
     .then(function (response) {
     if(response.data.length > 0) {
       setUserData(response.data);
-      console.log ('userDatas',userData);
     } 
     })
     .catch(function (error) {
@@ -31,7 +30,6 @@ function App  () {
     axios.get('http://localhost:3000/invoice') 
     .then(function (response) {
       setInvoiceData(response.data);
-      console.log ('invoice',invoiceData);
     })
     .catch(function (error) {
     console.log(error);
@@ -45,7 +43,7 @@ function App  () {
     <div className="App">
       <Header/>
       <SwiperC/>
-      <Formvalidate/>
+      <FormValidate datas={userData}/>
       <Tables type='customers' data={userData}/>
       <Tables type='invoice' data={invoiceData}/> 
       <Card/>
