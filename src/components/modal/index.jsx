@@ -1,8 +1,8 @@
-import React, {useState, useEffect } from 'react'
+import React from 'react'
 import Modal from 'react-modal';
 import styles from "./styles.module.scss";
 
-function InfoModal({isOpen,closeModal}) {
+function InfoModal({isOpen, closeModal, message}) {
     let subtitle;
 
     const customStyles = {
@@ -26,14 +26,10 @@ function InfoModal({isOpen,closeModal}) {
         },
       };
 
-    const [modalIsOpen, setIsOpen] = React.useState(false);
-
     function afterOpenModal() {
-        // references are now sync'd and can be accessed.
         subtitle.style.color = '#f00';
       }
 
-  
   return (
       <Modal
         isOpen={isOpen}
@@ -45,7 +41,7 @@ function InfoModal({isOpen,closeModal}) {
           <div className={styles.buttonWrapper}>
               <button className={styles.close} onClick={closeModal}>X</button>
           </div>
-        Formdaki zorunlu alanları doldurunuz.
+        {message}
       </Modal>
   )
 }

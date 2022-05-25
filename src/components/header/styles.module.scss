@@ -4,14 +4,13 @@ $just-white:white;
 .container
 {
     width: 100%;
-    // max-width: 950px;
+    max-width: 950px;
     display: block;
     margin: 0 auto;
     position:relative;
     // position: fixed;
     margin-bottom: 10px;
     display:block;
-    max-width: 950px;
 }
 .icons
 {
@@ -124,6 +123,6 @@ ul {
   @media screen and (min-width: 992px) {
     //For Large Laptops
         .container {
-            width: 950px;
+        width: 100%;
         }
       }

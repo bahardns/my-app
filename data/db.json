@@ -2,14 +2,14 @@
   "customers": [
     {
       "id": 1,
-      "firstName": "ceren",
-      "surName": "danis",
+      "firstName": "Ceren",
+      "surName": "Danis",
       "email": "ceren@danis.com"
     },
     {
       "id": 2,
-      "firstName": "bahar",
-      "surName": "danis",
+      "firstName": "Bahar",
+      "surName": "Danis",
       "email": "bahar@danis.com"
     },
     {
@@ -32,21 +32,9 @@
     },
     {
       "id": 6,
-      "firstName": "ayse",
-      "surName": "danis",
+      "firstName": "Ayse",
+      "surName": "Danis",
       "email": "ayse@danis.com"
-    },
-    {
-      "id": 7,
-      "firstName": "sad",
-      "surName": "sad",
-      "email": "frank@frank.com"
-    },
-    {
-      "id": 8,
-      "firstName": "fatma",
-      "surName": "gülden",
-      "email": "fatmag@.c.com"
     }
   ],
   "invoice": [
@@ -71,56 +59,32 @@
       "billNo": "Tr003",
       "amount": "300",
       "productName": "Headphone",
-      "status": "confirmed",
+      "status": "Confirmed",
       "userID": "1"
     },
     {
       "id": 4,
-      "billNo": "Tr900",
+      "billNo": "Tr004",
       "amount": "333",
-      "productName": "cable",
-      "status": "confirmed",
+      "productName": "TV",
+      "status": "Confirmed",
       "userID": "5"
     },
     {
       "id": 5,
-      "billNo": "22",
-      "amount": "11",
-      "productName": "sad",
-      "status": "confirmed",
-      "userID": 6
-    },
-    {
-      "id": 6,
-      "billNo": "34",
-      "amount": "435",
-      "productName": "dsdf",
-      "status": "confirmed",
-      "userID": 5
-    },
-    {
-      "id": 7,
-      "billNo": "34",
-      "amount": "23",
-      "productName": "abc",
-      "status": "confirmed",
+      "billNo": "Tr005",
+      "amount": "10",
+      "productName": "Telephone",
+      "status": "Unconfirmed",
       "userID": 3
     },
     {
-      "id": 8,
-      "billNo": "34",
-      "amount": "34",
-      "productName": "eraser",
-      "status": "confirmed",
-      "userID": 8
-    },
-    {
-      "id": 9,
-      "billNo": "39",
-      "amount": "39",
-      "productName": "kalem",
-      "status": "confirmed",
-      "userID": 7
+      "id": 6,
+      "billNo": "Tr006",
+      "amount": "10",
+      "productName": "Pencil",
+      "status": "Unconfirmed",
+      "userID": 3
     }
   ],
   "comments": [

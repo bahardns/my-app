@@ -63,7 +63,7 @@ tr:first-child{
 {
     display: block;
     float: left;
-    z-index: 99;
+    z-index: 1;
     width: 50%;
     box-sizing: border-box;
     padding-right: 10px;
@@ -71,6 +71,9 @@ tr:first-child{
     padding-right: 30px;
     font-weight:bold;
     position: relative;
+}
+.blurFormField{
+    z-index: 0;    
 }
 .formName
 {

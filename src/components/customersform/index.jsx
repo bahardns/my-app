@@ -6,7 +6,8 @@ import { AiOutlineMail } from "react-icons/ai";
 import { RiBillFill} from "react-icons/ri";
 import { MdProductionQuantityLimits } from "react-icons/md";
 import { AiOutlineDollar } from "react-icons/ai";
-import InfoModal from './../modal/index.jsx'
+import InfoModal from './../modal/index.jsx';
+import classnames from 'classnames';
 // import { Button } from 'bootstrap';
 
 function FormValidate({ datas }) {
@@ -22,6 +23,10 @@ function FormValidate({ datas }) {
 
     let now = new Date().getTime(); 
     const [errorModal, setErrorModal]=useState(false);
+    const [isConfirmed, setIsConfirmed]=useState({
+        status:null
+    });
+    const [messageText, setMessageText]=useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [clickMessage, setClickMessage] = useState('');
     const [AmountError, setAmountError] = useState('');
@@ -39,6 +44,14 @@ function FormValidate({ datas }) {
     const WordRegex = /^[a-zA-Z ğüşöçıİĞÜŞÖÇ]*$/;
     const NumberRegex = /^[0-9]+|\d+$/;
     
+    const modalControl = classnames ({
+        [styles.formField] : true,
+        [styles.blurFormField] : errorModal,
+    })
+
+    const limit = 500;
+    let sum = 0;
+
     const data=
     {
       savedTime:'',
@@ -168,20 +181,69 @@ function FormValidate({ datas }) {
         savedTime: now // burası hesaplanacak 
     }
 
-    const saveInvoice = (isExist,existId) => {
+    const calculateStatus = (isExist,existId) => {
         
-            const {billNo, amount, productName} = formValues;
-            console.log('existId',existId)
-            axios.post('http://localhost:3000/invoice', {
+        // 1- customerId lazım
+        // 2- invoice tablosundan ilgili customed id'daki her amount toplanır.
+        // 4- toplam değer limit değerinden (500) çıkartılır.
+        // 5- çıkan değer 0dan büyükse confirmed küçükse unconfirmed değeri setIsConfirmed'e atanır.
+        
+        // 425 500-425 => 75 > 0
+
+        // 550 500-550 => -50 <0
+
+            const {amount} = formValues;
+
+            axios.get(`http://localhost:3000/invoice?userID=${existId.id}`,{
+             })
+             .then(function (response) {
+                if(response.data.length > 0) {
+                    response.data.map((item) => {                        
+                      sum = Number(item.amount) + sum ;
+                    })
+                    sum = Number(amount) + sum ;
+                    console.log('sum',sum)
+                    if(limit - sum >= 0){
+                        isConfirmed.status=true;
+                    }
+                    else{
+                        isConfirmed.status=false;
+                    }
+                } else if(response.data.length === 0){
+                    sum = 0 ;                   
+                    sum = Number(amount);
+                      console.log('sum',sum)  
+                      if(limit - sum >= 0){
+                        isConfirmed.status=true;
+                      }
+                      else{
+                        isConfirmed.status=false;
+                      }
+                }
+                if (!response.status===200){
+                  console.log('hata')
+              }
+              })
+             .catch(function (error) {
+              console.error(error);
+            });  
+            setTimeout(() => {
+                saveInvoice(isExist,existId);
+            }, 200);
+    }
+
+      const saveInvoice = (isExist,existId) => {
+        const {billNo, amount, productName} = formValues;
+
+        axios.post('http://localhost:3000/invoice', {
                id: '',
                billNo, 
                amount,
                productName,
-               status: "confirmed",
+               status: isConfirmed.status ? 'Confirmed' : 'Unconfirmed',
                userID: existId.id ? existId.id : 'kek'
            })
            .then(function (response) {
-               console.log('invoice response', response.data);
                setFormValues({
                    firstName:'',
                    surName:'',
@@ -209,10 +271,8 @@ function FormValidate({ datas }) {
            email,
         })
         .then(function (response) {
-          console.log('customers response', response.data);
           axios.get(`http://localhost:3000/customers?email=${formValues.email}`) 
             .then(function (response) {
-                console.log ('-----response',response.data[0].id);
                 customerId.id = response.data[0].id;
             })
             .catch(function (error) {
@@ -226,7 +286,9 @@ function FormValidate({ datas }) {
     }
     
     const submitControl = async(e)=>{
-        if(!formValues.firstName || !formValues.surName || !formValues.email || !formValues.billNo || !formValues.amount || !formValues.productName){
+        const {firstName, surName, email, billNo, amount, productName} = formValues;
+        
+        if(!firstName || !surName || !email || !billNo || !amount || !productName){
             setClickMessage(false) 
         }
         else{
@@ -252,72 +314,49 @@ function FormValidate({ datas }) {
         }
 
         if(!firstName || !surName || !email || !billNo || !amount || !productName){
-            setErrorModal(true) 
+            setMessageText('Formdaki zorunlu alanları doldurunuz.');
+            setErrorModal(true);
         }
         else{
             const axios = require('axios');
-           
+
+            setMessageText('Form başarıyla gönderildi');
+            setErrorModal(true);
+
             datas.length>0 && datas.map((item)=> {
-                console.log('email',item.email)
-                console.log('formValues.email',formValues.email)
                 if(item.email === formValues.email ){
                      customerId.id = item.id;
                      customerId.isExist=true;
-                     console.log("customerid.isexist",customerId.isExist)
                 }else if (customerId.isExist === false && formValues.email!== undefined && formValues.email !== ''){
                     customerId.isExist=false;
-                    console.log("farklılar")
                 }
                
             })
             isCustomerExist();
-           
-            // await axios.post('http://localhost:3000/records', {
-            //     id,
-            //     email,
-            //     invoiceId,
-            //     billNo,
-            //     amount,
-            //     status,
-            // })
-            // .then(function (response) {
-            //     console.log('invoice response', response.data);
-            //     if (!response.status===200){
-            //       console.log('hata')
-            //     }
-            //   })
-            //  .catch(function (error) {
-            //   console.error(error);
-            // }); 
         }
     }
          
     
     const isCustomerExist =async (e) => {
-        console.log('----isExist',customerId.isExist) 
          if (customerId.isExist){
-                console.log('bu emailde birisi bulunmaktadır')
-                saveInvoice(customerId.isExist, customerId);
+            calculateStatus(customerId.isExist, customerId);
             }else{
-                console.log('kullanıcı yok')
                 saveCustomer();
-                    setTimeout(() => {
-                        saveInvoice(customerId.isExist,customerId);
-                    }, 200);
+                setTimeout(() => {
+                    calculateStatus(customerId.isExist,customerId);
+                }, 200);
             }
     }
 
-    console.log('setIsExist', customerId.isExist)
     useEffect(() => {
         localStorage.clear();
-
-    },[]);
+    },[isConfirmed.status]);
 
     return (
         <div className={styles.container}>
             <h3 className={styles.title}>Please fill the form below</h3>
             <form className={styles.userForm} onSubmit={(e)=> handleSubmit(e)} autocomplete="off">
-                <div className={styles.formField}>
+                <div className={modalControl}>
                      <label className={styles.formName}><span>*</span> First name:</label>
                         <div className={styles.iconForm}>
                             <BsFillPeopleFill  class={styles.icons}/>
@@ -325,7 +364,7 @@ function FormValidate({ datas }) {
                         <div className={styles.messageField}>{messages}</div>
                         </div>
                 </div>
-                <div className={styles.formField}>
+                <div className={modalControl}>
                     <label className={styles.formName}><span>*</span> Last name: </label>
                     <div className={styles.iconForm}>
                         <BsFillPeopleFill  class={styles.icons}/>
@@ -333,7 +372,7 @@ function FormValidate({ datas }) {
                     <input className={styles.formInput} type="text" id="lname" name="lname" placeholder="Last Name" value={formValues.surName} onChange={(e)=> handleValuesChange(e,'surName')}></input>
                     <div className={styles.messageFieldRight}>{SurnameError}</div>
                 </div>
-                <div className={styles.formField}>
+                <div className={modalControl}>
                     <label className={styles.formName}><span>*</span>E-Mail:</label>
                     <div className= {styles.iconForm}>
                         <AiOutlineMail  class={styles.icons} />
@@ -341,7 +380,7 @@ function FormValidate({ datas }) {
                     <input className={styles.formInput} type="text" id="mail" placeholder="E-mail" value={formValues.email} onChange={(e)=> handleValuesChange(e,'email')}></input>
                     <div className={styles.messageField}>{errorMessage}</div>
                 </div>
-                <div className={styles.formField}>
+                <div className={modalControl}>
                     <label className={styles.formName}><span>*</span>Bill no:</label>
                     <div className={styles.iconForm}>
                         <RiBillFill  class={styles.icons} />
@@ -349,7 +388,7 @@ function FormValidate({ datas }) {
                     <input className={styles.formInput} type="text" id="fname" name="fname" maxLength={5} placeholder="Bill No" value={formValues.billNo} onChange={((e)=> handleValuesChange(e,'billNo'))}></input>
                     <div className={styles.messageFieldRight}>{NumberError}</div>
                 </div>
-                <div className={styles.formField}>
+                <div className={modalControl}>
                     <label className={styles.formName}><span>*</span> Amount:</label>
                     <div className={styles.iconForm}>
                         <AiOutlineDollar class={styles.icons}/>
@@ -357,7 +396,7 @@ function FormValidate({ datas }) {
                     <input className={styles.formInput} type="text" id="lname" name="lname"  maxLength={3}  placeholder="Amount"  value={formValues.amount}  onChange={(e)=> handleValuesChange(e,'amount')}></input>
                     <div className={styles.messageField}>{AmountError}</div>
                 </div>
-                <div className={styles.formField}>
+                <div className={modalControl}>
                     <label className={styles.formName}><span>*</span> Product Name:</label>
                     <div className={styles.iconForm}>
                         <MdProductionQuantityLimits  class={styles.icons}/>
@@ -368,9 +407,8 @@ function FormValidate({ datas }) {
                     <input className={styles.formSubmit} type="submit" value="Submit" onSubmit={((e)=> submitControl(e,'firstname'))}></input>
                 </div>
             </form>
-            <InfoModal isOpen={errorModal} closeModal={()=> setErrorModal(false) }></InfoModal>
-            <InfoModal isOpen={clickMessage} closeModal={()=> setClickMessage(false) }></InfoModal>
-
+            <InfoModal isOpen={errorModal} closeModal={()=> setErrorModal(false) } message={messageText}></InfoModal>
+        
         </div>
     )
 }

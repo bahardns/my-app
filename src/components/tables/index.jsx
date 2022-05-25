@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {userInfos, invoiceInfos, headNames} from '../../mock/listingData';
+import { headNames } from '../../mock/listingData';
 import  styles  from "./styles.module.scss";
 
 class Tables extends Component {
@@ -78,7 +78,6 @@ class Tables extends Component {
                         </table> 
                     </div>    
                  </> 
-            
         );
     }
  }

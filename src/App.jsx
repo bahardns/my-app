@@ -10,7 +10,6 @@ import Card from "./components/card/index.jsx"
 import SwiperC from './components/swiper';
 
 function App  () {
-  const [idNumber,setIdNumber ] = useState(3);
   const [userData, setUserData] = useState([]);
   const [invoiceData, setInvoiceData] = useState([]);
 
