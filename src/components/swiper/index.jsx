@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import img from './img.jpeg';
-import not from './not.png';
+import t from './t.jpeg';
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -26,9 +26,9 @@ export default function App() {
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
         className="mySwiper"
       >
+        {/* <SwiperSlide><img src={not} alt="json" ></img></SwiperSlide> */}
         <SwiperSlide><img src={img} alt="json" ></img></SwiperSlide>
-        <SwiperSlide><img src={not} alt="json" ></img></SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
+        <SwiperSlide><img src={t} alt="json" ></img> </SwiperSlide>
         {/* <SwiperSlide>Slide 4</SwiperSlide>
         <SwiperSlide>Slide 5</SwiperSlide>
         <SwiperSlide>Slide 6</SwiperSlide>

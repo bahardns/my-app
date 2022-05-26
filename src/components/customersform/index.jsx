@@ -10,6 +10,7 @@ import InfoModal from './../modal/index.jsx';
 import classnames from 'classnames';
 // import { Button } from 'bootstrap';
 
+//local stroge değerlerinin okunduğu alan
 function FormValidate({ datas }) {
 
     const [formValues, setFormValues] = useState({
@@ -28,7 +29,6 @@ function FormValidate({ datas }) {
     });
     const [messageText, setMessageText]=useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const [clickMessage, setClickMessage] = useState('');
     const [AmountError, setAmountError] = useState('');
     const [messages, setMessages] = useState('');
     const [SurnameError, setSurnameError] = useState('');
@@ -38,19 +38,21 @@ function FormValidate({ datas }) {
         isExist:false
     });
 
-    const emailRegex = /\S+@\S+\.\S+/;
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
     const AmountRegex = /^[0-9]+|\d+$/;
     const letterRegex = /^[a-zA-Z ğüşöçıİĞÜŞÖÇ]*$/;
     const WordRegex = /^[a-zA-Z ğüşöçıİĞÜŞÖÇ]*$/;
     const NumberRegex = /^[0-9]+|\d+$/;
     
+
     const modalControl = classnames ({
         [styles.formField] : true,
         [styles.blurFormField] : errorModal,
     })
 
-    const limit = 500;
-    let sum = 0;
+    const limit = 500; //kullanıcı bakiyesi
+    let sum = 0;      //toplam değeri
+
 
     const data=
     {
@@ -65,7 +67,8 @@ function FormValidate({ datas }) {
         amount:'',
       }
     }
-
+    
+        //validasyon işlemleri
     const validateEmail = (event) => {
         const email = event.target.value; 
         if (emailRegex.test(email) || email==='')  {
@@ -98,7 +101,6 @@ function FormValidate({ datas }) {
     const valideteNumber = (event) => {
         const number = event.target.value;
         if (NumberRegex.test(number)) {
-
             setNumberError('');
         }
         else {
@@ -175,23 +177,15 @@ function FormValidate({ datas }) {
         } 
         localStorage.setItem('accountingLocalStorage', JSON.stringify(prepareData))
     };
-
+//buraya bak
+//localstroge data statei ile doldurulan değişken 
     const prepareData = {
         data: formValues,
-        savedTime: now // burası hesaplanacak 
+        savedTime: now  
     }
-
+    //statu hesaplama okuma
     const calculateStatus = (isExist,existId) => {
         
-        // 1- customerId lazım
-        // 2- invoice tablosundan ilgili customed id'daki her amount toplanır.
-        // 4- toplam değer limit değerinden (500) çıkartılır.
-        // 5- çıkan değer 0dan büyükse confirmed küçükse unconfirmed değeri setIsConfirmed'e atanır.
-        
-        // 425 500-425 => 75 > 0
-
-        // 550 500-550 => -50 <0
-
             const {amount} = formValues;
 
             axios.get(`http://localhost:3000/invoice?userID=${existId.id}`,{
@@ -231,7 +225,7 @@ function FormValidate({ datas }) {
                 saveInvoice(isExist,existId);
             }, 200);
     }
-
+        //kullanıcı kaydı oluşturulur get edildikten sonra
       const saveInvoice = (isExist,existId) => {
         const {billNo, amount, productName} = formValues;
 
@@ -241,7 +235,7 @@ function FormValidate({ datas }) {
                amount,
                productName,
                status: isConfirmed.status ? 'Confirmed' : 'Unconfirmed',
-               userID: existId.id ? existId.id : 'kek'
+               userID: existId.id ? existId.id : '-'
            })
            .then(function (response) {
                setFormValues({
@@ -284,18 +278,8 @@ function FormValidate({ datas }) {
         });
 
     }
-    
-    const submitControl = async(e)=>{
-        const {firstName, surName, email, billNo, amount, productName} = formValues;
-        
-        if(!firstName || !surName || !email || !billNo || !amount || !productName){
-            setClickMessage(false) 
-        }
-        else{
-            setClickMessage(true)
-        }
-    }
-    
+   
+    //onchange bağlı olan fonksiyon. 
      const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -335,7 +319,7 @@ function FormValidate({ datas }) {
             isCustomerExist();
         }
     }
-         
+         //buraya bak
     
     const isCustomerExist =async (e) => {
          if (customerId.isExist){
@@ -401,10 +385,10 @@ function FormValidate({ datas }) {
                     <div className={styles.iconForm}>
                         <MdProductionQuantityLimits  class={styles.icons}/>
                     </div>
-                    <input className={styles.formInput} type="text" id="mail" placeholder="Product Name" value={formValues.productName}  onChange={((e)=> handleValuesChange(e,'productName'))}></input>
+                    <input className={styles.formInput} type="text" id="mail" placeholder="Product Name" value={formValues.productName}  onChange={((e)=> handleValuesChange(e,'productName'))}></input>  
                 </div>
                 <div className={styles.formButton}>
-                    <input className={styles.formSubmit} type="submit" value="Submit" onSubmit={((e)=> submitControl(e,'firstname'))}></input>
+                    <input className={styles.formSubmit} type="submit" value="Submit"></input>
                 </div>
             </form>
             <InfoModal isOpen={errorModal} closeModal={()=> setErrorModal(false) } message={messageText}></InfoModal>

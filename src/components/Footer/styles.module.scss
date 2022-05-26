@@ -54,9 +54,9 @@
   @media screen and (min-width: 992px) {
     //For Large Laptops
         .container{
-            width: 950px;
+           max-width: 900px;
         }
         .copyright{
-            width: 950px;
+          max-width: 900px;
         }
       }

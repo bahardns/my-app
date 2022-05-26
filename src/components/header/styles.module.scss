@@ -4,7 +4,7 @@ $just-white:white;
 .container
 {
     width: 100%;
-    max-width: 950px;
+    // max-width: 950px;
     display: block;
     margin: 0 auto;
     position:relative;
@@ -15,11 +15,15 @@ $just-white:white;
 .icons
 {
 
-  background-image: url(ec1.png);
-  background-size: 100px 50px;
+  // background-image: url(ec1.png);
+  // background-size: 100px 50px;
   width: 150px;
   height: 50px;
   background-repeat: no-repeat;
+  font-family:'Times New Roman', Times, serif;
+  margin: 0 auto;
+  padding: 5px 14px;
+  font-size: 17px;
 }
 ul {
     list-style-type: none;
@@ -123,6 +127,6 @@ ul {
   @media screen and (min-width: 992px) {
     //For Large Laptops
         .container {
-        width: 100%;
-        }
+        max-width: 900px;
       }
+    }

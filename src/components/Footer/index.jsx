@@ -17,7 +17,7 @@ class Footer extends Component {
                 </div>
                 </div>
             <div className={styles.copyright}>
-                <p>© 2022 Copyright: Bahar Daniş & Buse Karakaş</p>
+                <p>© 2022 Copyright Bahar Daniş</p>
                 </div>
             </>
         );

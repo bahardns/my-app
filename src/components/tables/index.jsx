@@ -71,7 +71,8 @@ class Tables extends Component {
                                 <tr>
                                     {Object !==null && Object.keys(item).map((key)=>(
                                         <td>{item[key]}</td>
-                                ) )} 
+                                       )
+                                     )} 
                                 </tr>  
                                 ))}
                                 </tbody>

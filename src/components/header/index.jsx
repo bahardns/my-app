@@ -7,18 +7,8 @@ class Header extends Component {
         return (
                 <div className={styles.container}>
                     <ul>
-                        <li className={styles.icons}></li>
+                        <li className={styles.icons}><span>ACCOUNTING SYSTEM </span></li>
                         <li><a className={styles.active} href="#home">Home</a></li>
-                        <li><a href="#news">News</a></li>
-                        <li><a href="#contact">Contact us </a></li>
-                        <li><a href="#about">About us </a></li>
-                        <div className={styles.logincontainer}>
-                        <form>
-                        <input type="text" placeholder="Username" name="username"></input>
-                        <input type="text" placeholder="Password" name="psw"></input>
-                        <button type="submit">Login</button>
-                        </form>
-                    </div>
                     </ul>
                     
                 </div>     
